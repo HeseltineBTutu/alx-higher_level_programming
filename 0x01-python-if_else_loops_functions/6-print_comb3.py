@@ -5,4 +5,4 @@ for num in range(10):
             print("01", end=", ")
         else:
             print("{0:02d}".format(10*num+j), end=", ")
-print("{0:02d}".format((10*9) + 9))
+print("{0:02d}".format(89))
