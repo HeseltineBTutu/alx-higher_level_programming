@@ -9,7 +9,7 @@ def remove_char_at(str, n):
         n (int): the position of the character to remove (0-based index)
 
     Returns:
-        str: a copy of the input string with 
+        str: a copy of the input string with
         the character at position n removed
     """
     if n < 0:
