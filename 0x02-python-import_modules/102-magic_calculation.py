@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-import magic_calculation_102
-
-add = magic_calculation_102.add
-sub = magic_calculation_102.sub
+from magic_calculation_102 import add, sub
 
 def magic_calculation(a, b):
     if a < b:
