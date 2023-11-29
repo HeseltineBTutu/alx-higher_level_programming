@@ -7,12 +7,13 @@
  */
 int check_cycle(listint_t *list)
 {
-	if (list == NULL)
-	{
-		return (0);
-	}
 	listint_t *tortoise = list;
 	listint_t  *hare = list;
+
+	if (list == NULL)
+	{
+		return(0);
+	}
 
 	while (tortoise != NULL && hare != NULL && hare->next != NULL)
 	{
