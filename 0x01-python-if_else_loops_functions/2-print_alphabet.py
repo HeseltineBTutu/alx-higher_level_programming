@@ -1,4 +1,5 @@
 #!/usr/bin/python3
-character = range(97, 123)
-for alphabet in character:
-    print(chr(alphabet), end='')
+output = ""
+for char in range(97, 123):
+    output += "{}".format(chr(char))
+print(output)
