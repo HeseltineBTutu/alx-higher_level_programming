@@ -2,4 +2,4 @@
 output = ""
 for char in range(97, 123):
     output += "{}".format(chr(char))
-print(output)
+print(output, end='')
