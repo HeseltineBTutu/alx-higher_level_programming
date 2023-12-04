@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
-characters = range(122, 96, -1)
-result = ''
-for i, char in enumerate(characters):
-    if i % 2 == 0:
-        result += chr(char).lower()
+output = ''
+for char_code in range(122, 96, -1):
+    char = chr(char_code)
+    if (122- char_code) % 2 == 0:
+        output += "{}".format(char.upper())
     else:
-        result += chr(char).upper()
-print(result)
+        output += "{}".format(char.lower())
+print(output, end='')
