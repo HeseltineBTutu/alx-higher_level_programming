@@ -3,6 +3,7 @@
 This module contains functionalities related to geometric shapes.
 """
 
+
 class Rectangle:
     """
      A class Representing a rectangle.
@@ -13,8 +14,8 @@ class Rectangle:
      """
 
     def __init__(self, width=0, height=0):
-         self.__width = width
-         self.__height = height
+        self.__width = width
+        self.__height = height
 
     @property
     def width(self):
@@ -49,10 +50,8 @@ class Rectangle:
             my_perimeter = 0
         return my_perimeter
 
-
     def __str__(self):
         rectangle_str = ""
         for _ in range(self.__height):
             rectangle_str += '#' * self.__width + '\n'
-        return rectangle_str.rstrip() # Remove the trailing newline for cleaner output
-
+        return rectangle_str.rstrip()
