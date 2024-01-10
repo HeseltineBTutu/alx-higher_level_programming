@@ -28,3 +28,6 @@ def append_after(filename="", search_string="", new_string=""):
     if found:
         with open(filename, 'w') as f:
             f.writelines(lines)
+        return True
+    else:
+        return False
