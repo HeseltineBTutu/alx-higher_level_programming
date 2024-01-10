@@ -16,11 +16,12 @@ def append_after(filename="", search_string="", new_string=""):
     Returns:
     None
     """
+    text = ""
     with open(filename, 'r') as f:
-           lines = f.readlines()
+        for line in f:
+            text += line
+            if search_string in line:
+                text += new_string
 
     with open(filename, 'w') as f:
-        for line in lines:
-            f.write(line)
-            if search_string in line:
-                f.write(new_string + '\n')
+        f.write(text)
