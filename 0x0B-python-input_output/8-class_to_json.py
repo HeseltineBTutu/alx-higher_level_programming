@@ -2,16 +2,25 @@
 """
 A module dictionary description with simple data structure
 """
-import json
 
 
 def class_to_json(obj):
     """
-    a function that returns the dictionary description
-    with simple data structures
+    Serialize an object into a dictionary with simple
+    data structures for JSON compatibility.
 
-    Attributes:
-    - obj - serialized objected
+    Args:
+    - obj: An instance of a class
+
+    Returns:
+    - Dictionary description of the object's attributes
+
+    Note: This function assumes all attributes of the
+    object are serializable.
     """
-    json_data = json.dumps(obj.__dict__)
-    return json_data
+    serializable_attributes = {}
+    for attr, value in obj.__dict__.items():
+        if isinstance(value, (list, dict, str, int, bool)):
+            serializable_attributes[attr] = value
+
+    return serializable_attributes
