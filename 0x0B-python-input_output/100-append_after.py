@@ -17,17 +17,10 @@ def append_after(filename="", search_string="", new_string=""):
     None
     """
     with open(filename, 'r') as f:
-        lines = f.readlines()
+           lines = f.readlines()
 
-    found = False
-    for i, line in enumerate(lines):
-        if search_string in line:
-            lines[i] = line.replace(search_string, new_string)
-            found = True
-
-    if found:
-        with open(filename, 'w') as f:
-            f.writelines(lines)
-        return True
-    else:
-        return False
+    with open(filename, 'w') as f:
+        for line in lines:
+            f.write(line)
+            if search_string in line:
+                f.write(new_string + '\n')
