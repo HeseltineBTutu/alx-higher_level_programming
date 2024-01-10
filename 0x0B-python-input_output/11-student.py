@@ -24,6 +24,6 @@ class Student:
         return filtered_attrs
 
     def reload_from_json(self, json):
-        for  key, value in json.items():
+        for key, value in json.items():
             if hasattr(self, key):
                 setattr(self, key, value)
