@@ -3,16 +3,15 @@
 const { argv } = require('node:process');
 const arg1 = argv[2];
 const parsedArg = parseInt(arg1);
-const string1 = 'C is fun';
-let newString = '';
 
 if (!isNaN(parsedArg)) {
   if (parsedArg > 0) {
+    let output = '';
     for (let i = 0; i < parsedArg; i++) {
-      newString += string1 + '\n';
+      output += 'C is fun\n';
     }
-    console.log(newString.trim());
-  } else {
-    console.log('Missing number of occurrences');
+    console.log(output.trim());
   }
+} else {
+  console.log('Missing number of occurrences');
 }
