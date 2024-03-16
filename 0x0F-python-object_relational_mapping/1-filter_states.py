@@ -26,10 +26,10 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     # Execute SQL query
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
 
     # Fetch all the rows
-    rows = [row for row in cursor.fetchall()]
+    rows = cursor.fetchall()
     for row in rows:
         print(row)
 
