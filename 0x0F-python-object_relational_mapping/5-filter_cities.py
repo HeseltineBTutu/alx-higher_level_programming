@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """
 This script connects to a MySQL database and displays
-all values in the cities of that state.
+all values in the cities of the given state..
 
-Usage:./5-filter_cities.py
+Usage: ./5-filter_cities.py username password database_name state_name
 """
 import MySQLdb
 import sys
@@ -22,15 +22,18 @@ if __name__ == "__main__":
             db=database_name
             )
     cursor = db.cursor()
-    sql_query = "SELECT GROUP_CONCAT(cities.name ORDER BY cities.id \
-            ASC SEPARATOR ', ') \
-            FROM cities \
-            JOIN states ON cities.state_id = states.id \
-            WHERE states.name = %s"
+    sql_query = """
+    SELECT cities.name
+    FROM cities
+    JOIN states ON cities.state_id = states.id
+    WHERE states.name = %s
+    ORDER BY cities.id ASC
+    """
     cursor.execute(sql_query, (state_name,))
     # Fetch the row
-    row = cursor.fetchone()
-    if row[0]:
-        print(row[0])
+    results = cursor.fetchall()
+    if results:
+        cities = [row[0] for row in results]
+        print(", ".join(cities))
     cursor.close()
     db.close()
