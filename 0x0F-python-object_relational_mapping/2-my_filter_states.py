@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
     # Execute SQL query
     sql_query = "SELECT * FROM states \
-            WHERE name = '{}' ORDER BY \
+            WHERE name LIKE BINARY '{}' ORDER BY \
             id ASC".format(state_name)
     cursor.execute(sql_query)
 
