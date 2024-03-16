@@ -21,19 +21,26 @@ if __name__ == "__main__":
             passwd=password,
             db=database_name
             )
-    cursor = db.cursor()
-    sql_query = """
-    SELECT cities.name
-    FROM cities
-    JOIN states ON cities.state_id = states.id
-    WHERE states.name = %s
-    ORDER BY cities.id ASC
-    """
-    cursor.execute(sql_query, (state_name,))
-    # Fetch the row
-    results = cursor.fetchall()
-    if results:
-        cities = [row[0] for row in results]
-        print(", ".join(cities))
-    cursor.close()
+    # Cretae a cursor object using context manager
+    with db.cursor() as cursor:
+        cursor.execute("""
+            SELECT
+                cities.id, cities.name
+            FROM
+                cities
+            JOIN
+                states
+            ON
+                cities.state_id = states.id
+            WHERE
+                states.name LIKE BINARY %s
+            ORDER BY
+                cities.id ASC
+        """, (state_name,))
+
+        # Fetch the rows
+        rows = cursor.fetchall()
+
+        print(", ".join([row[1] for row in rows]))
+
     db.close()
