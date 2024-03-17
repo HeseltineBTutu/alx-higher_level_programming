@@ -4,7 +4,10 @@ Script for querying the  database for States containing
 letter 'a'
 """
 import sys
-from db import create_session, State
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
+
 
 if __name__ == "__main__":
 
@@ -12,7 +15,13 @@ if __name__ == "__main__":
     password = sys.argv[2]
     database_name = sys.argv[3]
 
-    session = create_session(username, password, database_name)
+    connection_string = 'mysql+mysqldb://{}:{}@localhost/{}' \
+        .format(username, password, database_name)
+
+    engine = create_engine(connection_string, pool_pre_ping=True)
+
+    Session = sessionmaker(bind=engine)
+    session = Session()
     states_with_letter_a = session.query(State) \
         .filter(State.name.contains('a')).all()
 
