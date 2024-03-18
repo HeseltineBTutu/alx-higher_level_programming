@@ -3,7 +3,7 @@
 a script that adds the State object “Louisiana” to the database
 """
 import argparse
-import sysy
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -16,14 +16,14 @@ def add_louisiana(username, password, db_name):
     """
 
     # Construct database connection string
-    engine_str = f"mysql+myisqldb://{username}:{password} \
+    engine_str = f"mysql+mysqldb://{username}:{password} \
             @localhost:3306/{db_name}"
 
     # Create a database engine
     engine = create_engine(engine_str, pool_pre_ping=True)
     # Create a session factory to interact with the database
     Session = sessionmaker(bind=engine)
-    isession = Session()
+    session = Session()
     # Create the Louisiana state object
     louisiana = State(name="Louisiana")
     session.add(louisiana)
