@@ -18,7 +18,7 @@ if __name__ == "__main__":
     engine = create_engine(conn_str, pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    
+
     # Parameterized query to prevent SQL injection
     result = session.query(State).filter(State.name == state_name).first()
 
@@ -26,5 +26,5 @@ if __name__ == "__main__":
         print(result.id)
     else:
         print("Not found")
-    
+
     session.close()
