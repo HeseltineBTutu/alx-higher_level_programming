@@ -1,3 +1,3 @@
 #!/bin/bash
-# This script gets a URL and displays response body for 200 status codes 
-response=$(curl -s -w '%{http_code}' -o /dev/null $1); [[ $response == 200 ]] && curl -s $1
+# Sends a GET request to a URL and displays the body of the response
+curl -s -X GET "$1" -o /tmp/body_response && grep -Pzo '(?<=<body>).*?(?=</body>)' /tmp/body_response
