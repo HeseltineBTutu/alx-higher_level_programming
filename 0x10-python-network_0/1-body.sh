@@ -1,4 +1,3 @@
 #!/usr/bin/bash
-# This script displays the response body for successful (200) GET requests
-response=$(curl -s -w '%{http_code}' -o /dev/null $1)
-if [[ $response == "200" ]]; then curl -s $1; fi
+# This script gets a URL and displays response body for 200 status codes 
+response=$(curl -s -w '%{http_code}' -o /dev/null $1); [[ $response == 200 ]] && curl -s $1
